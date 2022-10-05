@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  postgres_1:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "Maltseva_BSE206"
+      POSTGRES_USER: "Maltseva_BSE206"
+      POSTGRES_PASSWORD: "Maltseva_BSE206"
+    volumes:
+      - ./db/scripts/db1:/docker-entrypoint-initdb.d
+      - db_volume_1:/var/lib/pgsql/data
+    ports:
+      - "5435:5432"
+  postgres_2:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "Maltseva_BSE206"
+      POSTGRES_USER: "Maltseva_BSE206"
+      POSTGRES_PASSWORD: "Maltseva_BSE206"
+    volumes:
+      - ./db/scripts/db2:/docker-entrypoint-initdb.d
+      - db_volume_2:/var/lib/pgsql/data
+    ports:
+      - "5433:5432"
+  postgres_3:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "Maltseva_BSE206"
+      POSTGRES_USER: "Maltseva_BSE206"
+      POSTGRES_PASSWORD: "Maltseva_BSE206"
+    volumes:
+      - ./db/scripts/db3:/docker-entrypoint-initdb.d
+      - db_volume_3:/var/lib/pgsql/data
+    ports:
+      - "5434:5432"
+
+volumes:
+  db_volume_1:
+    external: true
+  db_volume_2:
+    external: true
+  db_volume_3:
+    external: true
